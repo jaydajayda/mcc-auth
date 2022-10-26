@@ -49,7 +49,6 @@ public class TokenAPI {
 		}
 		// bad request
 		return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-		
 	}
 	
 	private boolean checkPassword(String username, String password) {
@@ -65,12 +64,6 @@ public class TokenAPI {
 			return true;				
 		}		
 		return false;
-		
-		
-		
-		
-		
-
 	}
 	
 	public static Token getAppUserToken() {
@@ -93,12 +86,13 @@ public class TokenAPI {
     
 	private Customer getCustomerByNameFromCustomerAPI(String username) {
 		try {
-			String apiHost = System.getenv("API_HOST");
-			if(apiHost == null) {
-				apiHost = this.dataApiHost;
-			}
+			String dataApiHost = System.getenv("DATA_API_HOST");
 			
-			URL url = new URL("http://" + apiHost + "/api/customers/byname/" + username);
+			// if(apiHost == null) {
+			// 	apiHost = this.dataApiHost;
+			// }
+			
+			URL url = new URL("http://" + dataApiHost + "/api/customers/byname/" + username);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
