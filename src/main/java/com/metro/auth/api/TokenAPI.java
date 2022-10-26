@@ -23,8 +23,8 @@ import com.metro.auth.util.JWTHelper;
 @RequestMapping("/token")
 public class TokenAPI {
 	
-	
-	String dataApiHost = "localhost:8080";
+
+	String dataApiHost = System.getenv("DATA_API_HOST");
 	
 	//private static Key key = AuthFilter.key;	
 	public static Token appUserToken;
